@@ -1,0 +1,24 @@
+.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #814b4b;
+  height: 50px;
+  align-items: center;
+}
+
+.navbar-nav{
+  display: flex;
+  column-gap: 20px;
+  list-style: none;
+}
+
+.nav-link{
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link.active{
+  color: #63d654;
+}
