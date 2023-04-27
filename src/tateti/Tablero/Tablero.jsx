@@ -15,12 +15,24 @@ export const Tablero = () => {
     setTurno(turno === 'X' ? 'O' : 'X')
   }
 
+  const handleMouseEnter = () => {
+    console.log('dentro del tablero')
+  }  
+  
+  const handleMouseLeave = () => {
+    console.log('salió del tablero')
+  }
+
+  const handleContextMenu = (e) => {
+    e.preventDefault()
+    console.log('se hizo click derecho')
+  }
 
   return (
-    <div className="tablero">
-      <Fila cuadrados={cuadrados} handleClick={handleClick}/>
-      <Fila cuadrados={cuadrados} handleClick={handleClick}/>
-      <Fila cuadrados={cuadrados} handleClick={handleClick}/>
+    <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="tablero">
+      <Fila handleContextMenu={handleContextMenu} cuadrados={cuadrados} handleClick={handleClick} positions={[0,1,2]}/>
+      <Fila handleContextMenu={handleContextMenu} cuadrados={cuadrados} handleClick={handleClick} positions={[3,4,5]}/>
+      <Fila handleContextMenu={handleContextMenu} cuadrados={cuadrados} handleClick={handleClick} positions={[6,7,8]}/>
     </div>
   )
 

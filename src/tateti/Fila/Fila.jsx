@@ -1,6 +1,6 @@
 import { Cuadrado } from "../Cuadrado/Cuadrado"
 
-export const Fila = ({cuadrados, handleClick}) => {
+export const Fila = ({cuadrados, handleClick, positions, handleContextMenu}) => {
 
   const renderCuadrado = (i) => {
     return (
@@ -12,10 +12,12 @@ export const Fila = ({cuadrados, handleClick}) => {
   }
 
   return (
-    <div className="fila">
-      {renderCuadrado(0)}
-      {renderCuadrado(1)}
-      {renderCuadrado(2)}
+    <div onContextMenu={handleContextMenu} className="fila">
+      {
+        positions.map( position => (
+          renderCuadrado( position )
+        ))
+      }
     </div>
   )
 }
