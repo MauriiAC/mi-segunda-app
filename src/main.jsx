@@ -8,19 +8,22 @@ import { ProductDetail } from './products/ProductDetail.jsx'
 import { NavBar } from "./components/NavBar/NavBar.jsx"
 import { Tablero } from "./tateti/Tablero/Tablero.jsx"
 import { Select } from "./Selector/Select.jsx"
+import { UserProvider } from "./context/UserProvider.jsx"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <NavBar />
-      <Select opciones={['Opcion 1', 'Opcion 3', 'Opcion 5']} tipo={'grupo'}/>
-      <Routes>
-        <Route path='/' element={<App msg={"Ruta raiz"}/>} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/products/:productId' element={<ProductDetail />} />
-        <Route path='/tateti' element={<Tablero />} />
-        <Route path='/*' element={<App msg={"Ruta por defecto"}/>} />
-      </Routes>
+      <UserProvider>
+        <NavBar />
+        <Select opciones={['Opcion 1', 'Opcion 3', 'Opcion 5']} tipo={'grupo'}/>
+        <Routes>
+          <Route path='/' element={<App msg={"Ruta raiz"}/>} />
+          <Route path='/products' element={<Products />} />
+          <Route path='/products/:productId' element={<ProductDetail />} />
+          <Route path='/tateti' element={<Tablero />} />
+          <Route path='/*' element={<App msg={"Ruta por defecto"}/>} />
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )
