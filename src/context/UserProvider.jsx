@@ -3,12 +3,14 @@ import { UserContext } from "./UserContext"
 
 export const UserProvider = ({children}) => {
 
-  const [user, setUser] = useState({
+  const initialValue = {
     id: null,
     name: null,
     lastName: null,
     nick: null
-  })
+  }
+
+  const [user, setUser] = useState(initialValue)
 
   const login = () => setUser(
     {
@@ -19,8 +21,12 @@ export const UserProvider = ({children}) => {
     }
   )
 
+  const logout = () => setUser(
+    initialValue
+  )
+
   return (
-    <UserContext.Provider value={{ user, login }}>
+    <UserContext.Provider value={{ user, login, logout }}>
       {children}
     </UserContext.Provider>
   )

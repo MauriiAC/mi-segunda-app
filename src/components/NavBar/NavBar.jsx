@@ -5,7 +5,12 @@ import { useContext } from "react"
 
 export const NavBar = () => {
 
-  const { user, login} = useContext(UserContext)
+  const { user, login, logout} = useContext(UserContext)
+
+  const handleSession = () => {
+    if(user.id) logout()
+    else login()
+  }
 
   return (
     <nav className="navbar">
@@ -25,8 +30,17 @@ export const NavBar = () => {
             Sobre Nosotros
           </NavLink>
         </li>
+        {
+          user.id
+          ?
+          <li className="nav-item">
+            {`Bienvenido ${user.name}`}
+          </li>
+          :
+          null
+        }
         <li className="nav-item">
-          <button onClick={login}>
+          <button onClick={handleSession}>
             {
               user.id
               ?
