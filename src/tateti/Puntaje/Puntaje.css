@@ -1,0 +1,8 @@
+.score{
+  font-family: monospace;
+}
+
+.score.winner{
+  color: darkgreen;
+  font-size: larger;
+}

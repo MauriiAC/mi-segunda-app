@@ -15,7 +15,7 @@ export const UserProvider = ({children}) => {
   const login = () => setUser(
     {
       id: 123,
-      name: "Mauriio",
+      name: "Mauricio",
       lastName: "Cuello",
       nick: "Maurii_AC"
     }

@@ -26,18 +26,16 @@ export const NavBar = () => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to='/sobre-nosotros' className='nav-link'>
-            Sobre Nosotros
+          <NavLink to='/tateti' className='nav-link'>
+            Tateti
           </NavLink>
         </li>
         {
           user.id
-          ?
+          &&
           <li className="nav-item">
             {`Bienvenido ${user.name}`}
           </li>
-          :
-          null
         }
         <li className="nav-item">
           <button onClick={handleSession}>

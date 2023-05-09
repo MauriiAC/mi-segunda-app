@@ -4,7 +4,8 @@ export const Fila = ({cuadrados, handleClick, positions, handleContextMenu}) => 
 
   const renderCuadrado = (i) => {
     return (
-      <Cuadrado 
+      <Cuadrado
+        key={i}
         value={cuadrados[i]}
         onClick={() => handleClick(i)}
       />
