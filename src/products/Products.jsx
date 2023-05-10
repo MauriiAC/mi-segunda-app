@@ -17,6 +17,10 @@ export const Products = () => {
 
   return (
     <>
+    {
+    products.length
+    ?
+    <>
     <h1>Productos</h1>
     <ul>
       {
@@ -27,6 +31,10 @@ export const Products = () => {
         ))
       }
     </ul>
+    </>
+    :
+    <h3>Loading...</h3>
+    }
     </>
   )
 }
