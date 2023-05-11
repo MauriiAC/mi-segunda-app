@@ -1,7 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom"
 import data from './../assets/mock_data.json'
 import './ProductDetail.css'
+import { useEffect, useState } from "react"
+import { doc, getDoc, getFirestore } from "firebase/firestore"
+
 export const ProductDetail = ( ) => {
+
+  const db = getFirestore()
   
   const params = useParams()
 
@@ -13,16 +18,39 @@ export const ProductDetail = ( ) => {
     navigate(-1)
   }
 
-  const product = data.find( product => product.id == productId)
+  const [product, setProduct] = useState(null)
   
+  useEffect(() => {
+
+      const itemDB = doc(db, 'Items', productId)
+
+      getDoc(itemDB)
+      .then( (product) => {
+        if (product.exists()){
+          setProduct({id: product.id ,...product.data()})
+        }
+      })
+    }
+    ,[]
+  )
+
   return (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">{product.name}</h5>
-        <p className="card-text">{product.price}</p>
-        <p className="card-text">{product.stock}</p>
+    <>
+    {
+      product
+      ?
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title">{product.name}</h5>
+          <p className="card-text">{product.price}</p>
+          <p className="card-text">{product.stock}</p>
+        </div>
+        <button onClick={onBack}> Volver </button>
       </div>
-      <button onClick={onBack}> Volver </button>
-    </div>
+      :
+      <h3>Loading...</h3>
+    }
+    </>
+
   )
 }
