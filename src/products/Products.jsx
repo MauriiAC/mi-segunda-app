@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 // import product_list from './../assets/mock_data.json'
 import { useEffect, useState } from 'react'
-import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { useForm } from '../hooks/useForm'
+import { db } from '../services/db'
 
 export const Products = () => {
 
-  const db = getFirestore()
   const [products, setProducts] = useState([])
   const {form, handleInputChange} = useForm({
     minPrice: ''
@@ -20,7 +20,7 @@ export const Products = () => {
       setProducts(products.docs.map( doc => ({id: doc.id ,...doc.data()} ) ))
     } )
 
-  }, [db])
+  }, [])
   
   const handleSubmit = (e) => {
     e.preventDefault()

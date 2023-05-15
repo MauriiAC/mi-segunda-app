@@ -30,6 +30,11 @@ export const NavBar = () => {
             Tateti
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to='/newProduct' className='nav-link'>
+            Nuevo Producto
+          </NavLink>
+        </li>
         {
           user.id
           &&

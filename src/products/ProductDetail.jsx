@@ -1,12 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom"
-import data from './../assets/mock_data.json'
 import './ProductDetail.css'
 import { useEffect, useState } from "react"
-import { doc, getDoc, getFirestore } from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../services/db"
 
 export const ProductDetail = ( ) => {
-
-  const db = getFirestore()
   
   const params = useParams()
 
@@ -31,7 +29,7 @@ export const ProductDetail = ( ) => {
         }
       })
     }
-    ,[]
+    ,[productId]
   )
 
   return (
